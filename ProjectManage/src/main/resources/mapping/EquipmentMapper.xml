@@ -1,0 +1,201 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.jhun.dao.EquipmentMapper" >
+  <resultMap id="BaseResultMap" type="com.jhun.entity.Equipment" >
+    <id column="id" property="id" jdbcType="INTEGER" />
+    <result column="equipment_type" property="equipmentType" jdbcType="VARCHAR" />
+    <result column="equipment_name" property="equipmentName" jdbcType="VARCHAR" />
+    <result column="project_name" property="projectName" jdbcType="VARCHAR" />
+    <result column="equipment_sketch" property="equipmentSketch" jdbcType="VARCHAR" />
+    <result column="equipment_describe" property="equipmentDescribe" jdbcType="VARCHAR" />
+    <result column="equipment_state" property="equipmentState" jdbcType="VARCHAR" />
+    <result column="equipment_handler_department" property="equipmentHandlerDepartment" jdbcType="VARCHAR" />
+    <result column="equipment_handler" property="equipmentHandler" jdbcType="VARCHAR" />
+    <result column="founder" property="founder" jdbcType="VARCHAR" />
+    <result column="create_time" property="createTime" jdbcType="TIMESTAMP" />
+    <result column="copySender" property="copysender" jdbcType="VARCHAR" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    id, equipment_type, equipment_name, project_name, equipment_sketch, equipment_describe, 
+    equipment_state, equipment_handler_department, equipment_handler, founder, create_time, 
+    copySender
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+    select 
+    <include refid="Base_Column_List" />
+    from p_equipment
+    where id = #{id,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
+    delete from p_equipment
+    where id = #{id,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.jhun.entity.Equipment" >
+    insert into p_equipment (id, equipment_type, equipment_name, 
+      project_name, equipment_sketch, equipment_describe, 
+      equipment_state, equipment_handler_department, 
+      equipment_handler, founder, create_time, 
+      copySender)
+    values (#{id,jdbcType=INTEGER}, #{equipmentType,jdbcType=VARCHAR}, #{equipmentName,jdbcType=VARCHAR}, 
+      #{projectName,jdbcType=VARCHAR}, #{equipmentSketch,jdbcType=VARCHAR}, #{equipmentDescribe,jdbcType=VARCHAR}, 
+      #{equipmentState,jdbcType=VARCHAR}, #{equipmentHandlerDepartment,jdbcType=VARCHAR}, 
+      #{equipmentHandler,jdbcType=VARCHAR}, #{founder,jdbcType=VARCHAR}, #{createTime,jdbcType=TIMESTAMP}, 
+      #{copysender,jdbcType=VARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="com.jhun.entity.Equipment" >
+    insert into p_equipment
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        id,
+      </if>
+      <if test="equipmentType != null" >
+        equipment_type,
+      </if>
+      <if test="equipmentName != null" >
+        equipment_name,
+      </if>
+      <if test="projectName != null" >
+        project_name,
+      </if>
+      <if test="equipmentSketch != null" >
+        equipment_sketch,
+      </if>
+      <if test="equipmentDescribe != null" >
+        equipment_describe,
+      </if>
+      <if test="equipmentState != null" >
+        equipment_state,
+      </if>
+      <if test="equipmentHandlerDepartment != null" >
+        equipment_handler_department,
+      </if>
+      <if test="equipmentHandler != null" >
+        equipment_handler,
+      </if>
+      <if test="founder != null" >
+        founder,
+      </if>
+      <if test="createTime != null" >
+        create_time,
+      </if>
+      <if test="copysender != null" >
+        copySender,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        #{id,jdbcType=INTEGER},
+      </if>
+      <if test="equipmentType != null" >
+        #{equipmentType,jdbcType=VARCHAR},
+      </if>
+      <if test="equipmentName != null" >
+        #{equipmentName,jdbcType=VARCHAR},
+      </if>
+      <if test="projectName != null" >
+        #{projectName,jdbcType=VARCHAR},
+      </if>
+      <if test="equipmentSketch != null" >
+        #{equipmentSketch,jdbcType=VARCHAR},
+      </if>
+      <if test="equipmentDescribe != null" >
+        #{equipmentDescribe,jdbcType=VARCHAR},
+      </if>
+      <if test="equipmentState != null" >
+        #{equipmentState,jdbcType=VARCHAR},
+      </if>
+      <if test="equipmentHandlerDepartment != null" >
+        #{equipmentHandlerDepartment,jdbcType=VARCHAR},
+      </if>
+      <if test="equipmentHandler != null" >
+        #{equipmentHandler,jdbcType=VARCHAR},
+      </if>
+      <if test="founder != null" >
+        #{founder,jdbcType=VARCHAR},
+      </if>
+      <if test="createTime != null" >
+        #{createTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="copysender != null" >
+        #{copysender,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.jhun.entity.Equipment" >
+    update p_equipment
+    <set >
+      <if test="equipmentType != null" >
+        equipment_type = #{equipmentType,jdbcType=VARCHAR},
+      </if>
+      <if test="equipmentName != null" >
+        equipment_name = #{equipmentName,jdbcType=VARCHAR},
+      </if>
+      <if test="projectName != null" >
+        project_name = #{projectName,jdbcType=VARCHAR},
+      </if>
+      <if test="equipmentSketch != null" >
+        equipment_sketch = #{equipmentSketch,jdbcType=VARCHAR},
+      </if>
+      <if test="equipmentDescribe != null" >
+        equipment_describe = #{equipmentDescribe,jdbcType=VARCHAR},
+      </if>
+      <if test="equipmentState != null" >
+        equipment_state = #{equipmentState,jdbcType=VARCHAR},
+      </if>
+      <if test="equipmentHandlerDepartment != null" >
+        equipment_handler_department = #{equipmentHandlerDepartment,jdbcType=VARCHAR},
+      </if>
+      <if test="equipmentHandler != null" >
+        equipment_handler = #{equipmentHandler,jdbcType=VARCHAR},
+      </if>
+      <if test="founder != null" >
+        founder = #{founder,jdbcType=VARCHAR},
+      </if>
+      <if test="createTime != null" >
+        create_time = #{createTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="copysender != null" >
+        copySender = #{copysender,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.jhun.entity.Equipment" >
+    update p_equipment
+    set equipment_type = #{equipmentType,jdbcType=VARCHAR},
+      equipment_name = #{equipmentName,jdbcType=VARCHAR},
+      project_name = #{projectName,jdbcType=VARCHAR},
+      equipment_sketch = #{equipmentSketch,jdbcType=VARCHAR},
+      equipment_describe = #{equipmentDescribe,jdbcType=VARCHAR},
+      equipment_state = #{equipmentState,jdbcType=VARCHAR},
+      equipment_handler_department = #{equipmentHandlerDepartment,jdbcType=VARCHAR},
+      equipment_handler = #{equipmentHandler,jdbcType=VARCHAR},
+      founder = #{founder,jdbcType=VARCHAR},
+      create_time = #{createTime,jdbcType=TIMESTAMP},
+      copySender = #{copysender,jdbcType=VARCHAR}
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+  <!-- 查询所有 -->
+  <select id="selectAll" resultMap="BaseResultMap" parameterType="com.jhun.entity.Equipment" >
+    select * from p_equipment
+    where 1=1
+    <if test="projectName != null and projectName != ''">
+      and project_name = #{projectName}
+    </if>
+    <if test="equipmentState != null and equipmentState != ''">
+      and equipment_state = #{equipmentState}
+    </if>
+  </select>
+  <!-- 查询总数 -->
+  <select id="countItem" resultType="Integer" parameterType="com.jhun.entity.Equipment" >
+    select count(*)
+    from p_equipment
+    where 1=1
+    <if test="projectName != null and projectName != ''">
+      and project_name = #{projectName}
+    </if>
+    <if test="equipmentState != null and equipmentState != ''">
+      and equipment_state = #{equipmentState}
+    </if>
+  </select>
+</mapper>

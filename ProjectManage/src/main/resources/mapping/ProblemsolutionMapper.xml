@@ -1,0 +1,173 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.jhun.dao.ProblemsolutionMapper" >
+  <resultMap id="BaseResultMap" type="com.jhun.entity.Problemsolution" >
+    <id column="id" property="id" jdbcType="INTEGER" />
+    <result column="problem_id" property="problemId" jdbcType="INTEGER" />
+    <result column="problem_sketch" property="problemSketch" jdbcType="VARCHAR" />
+    <result column="problem_review" property="problemReview" jdbcType="VARCHAR" />
+    <result column="problem_solution" property="problemSolution" jdbcType="VARCHAR" />
+    <result column="problem_state" property="problemState" jdbcType="VARCHAR" />
+    <result column="problem_handler_department" property="problemHandlerDepartment" jdbcType="VARCHAR" />
+    <result column="problem_handler" property="problemHandler" jdbcType="VARCHAR" />
+    <result column="founder" property="founder" jdbcType="VARCHAR" />
+    <result column="create_time" property="createTime" jdbcType="TIMESTAMP" />
+    <result column="copySender" property="copysender" jdbcType="VARCHAR" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    id, problem_id, problem_sketch, problem_review, problem_solution, problem_state, 
+    problem_handler_department, problem_handler, founder, create_time, copySender
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+    select 
+    <include refid="Base_Column_List" />
+    from p_problemsolution
+    where id = #{id,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
+    delete from p_problemsolution
+    where id = #{id,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.jhun.entity.Problemsolution" >
+    insert into p_problemsolution (id, problem_id, problem_sketch, 
+      problem_review, problem_solution, problem_state, 
+      problem_handler_department, problem_handler, 
+      founder, create_time, copySender
+      )
+    values (#{id,jdbcType=INTEGER}, #{problemId,jdbcType=INTEGER}, #{problemSketch,jdbcType=VARCHAR}, 
+      #{problemReview,jdbcType=VARCHAR}, #{problemSolution,jdbcType=VARCHAR}, #{problemState,jdbcType=VARCHAR}, 
+      #{problemHandlerDepartment,jdbcType=VARCHAR}, #{problemHandler,jdbcType=VARCHAR}, 
+      #{founder,jdbcType=VARCHAR}, #{createTime,jdbcType=TIMESTAMP}, #{copysender,jdbcType=VARCHAR}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="com.jhun.entity.Problemsolution" >
+    insert into p_problemsolution
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        id,
+      </if>
+      <if test="problemId != null" >
+        problem_id,
+      </if>
+      <if test="problemSketch != null" >
+        problem_sketch,
+      </if>
+      <if test="problemReview != null" >
+        problem_review,
+      </if>
+      <if test="problemSolution != null" >
+        problem_solution,
+      </if>
+      <if test="problemState != null" >
+        problem_state,
+      </if>
+      <if test="problemHandlerDepartment != null" >
+        problem_handler_department,
+      </if>
+      <if test="problemHandler != null" >
+        problem_handler,
+      </if>
+      <if test="founder != null" >
+        founder,
+      </if>
+      <if test="createTime != null" >
+        create_time,
+      </if>
+      <if test="copysender != null" >
+        copySender,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        #{id,jdbcType=INTEGER},
+      </if>
+      <if test="problemId != null" >
+        #{problemId,jdbcType=INTEGER},
+      </if>
+      <if test="problemSketch != null" >
+        #{problemSketch,jdbcType=VARCHAR},
+      </if>
+      <if test="problemReview != null" >
+        #{problemReview,jdbcType=VARCHAR},
+      </if>
+      <if test="problemSolution != null" >
+        #{problemSolution,jdbcType=VARCHAR},
+      </if>
+      <if test="problemState != null" >
+        #{problemState,jdbcType=VARCHAR},
+      </if>
+      <if test="problemHandlerDepartment != null" >
+        #{problemHandlerDepartment,jdbcType=VARCHAR},
+      </if>
+      <if test="problemHandler != null" >
+        #{problemHandler,jdbcType=VARCHAR},
+      </if>
+      <if test="founder != null" >
+        #{founder,jdbcType=VARCHAR},
+      </if>
+      <if test="createTime != null" >
+        #{createTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="copysender != null" >
+        #{copysender,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.jhun.entity.Problemsolution" >
+    update p_problemsolution
+    <set >
+      <if test="problemId != null" >
+        problem_id = #{problemId,jdbcType=INTEGER},
+      </if>
+      <if test="problemSketch != null" >
+        problem_sketch = #{problemSketch,jdbcType=VARCHAR},
+      </if>
+      <if test="problemReview != null" >
+        problem_review = #{problemReview,jdbcType=VARCHAR},
+      </if>
+      <if test="problemSolution != null" >
+        problem_solution = #{problemSolution,jdbcType=VARCHAR},
+      </if>
+      <if test="problemState != null" >
+        problem_state = #{problemState,jdbcType=VARCHAR},
+      </if>
+      <if test="problemHandlerDepartment != null" >
+        problem_handler_department = #{problemHandlerDepartment,jdbcType=VARCHAR},
+      </if>
+      <if test="problemHandler != null" >
+        problem_handler = #{problemHandler,jdbcType=VARCHAR},
+      </if>
+      <if test="founder != null" >
+        founder = #{founder,jdbcType=VARCHAR},
+      </if>
+      <if test="createTime != null" >
+        create_time = #{createTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="copysender != null" >
+        copySender = #{copysender,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.jhun.entity.Problemsolution" >
+    update p_problemsolution
+    set problem_id = #{problemId,jdbcType=INTEGER},
+      problem_sketch = #{problemSketch,jdbcType=VARCHAR},
+      problem_review = #{problemReview,jdbcType=VARCHAR},
+      problem_solution = #{problemSolution,jdbcType=VARCHAR},
+      problem_state = #{problemState,jdbcType=VARCHAR},
+      problem_handler_department = #{problemHandlerDepartment,jdbcType=VARCHAR},
+      problem_handler = #{problemHandler,jdbcType=VARCHAR},
+      founder = #{founder,jdbcType=VARCHAR},
+      create_time = #{createTime,jdbcType=TIMESTAMP},
+      copySender = #{copysender,jdbcType=VARCHAR}
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+  <!--根据问题id查询解决方案 -->
+  <select id="selectByProblemId" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+    select
+    <include refid="Base_Column_List" />
+    from p_problemsolution
+    where problem_id = #{problemId,jdbcType=INTEGER}
+  </select>
+</mapper>

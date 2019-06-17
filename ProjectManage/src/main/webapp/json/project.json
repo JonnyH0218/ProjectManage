@@ -1,0 +1,15 @@
+[
+	{ "id":"10", "pId":"0", "name":"用户管理"},
+	{ "id":"101", "pId":"10", "name":"查看用户","page": "/userList"},
+	{ "id":"102", "pId":"10", "name":"我的消息","page": "/messagelist"},
+	{ "id":"11", "pId":"0", "name":"项目管理"},
+	{ "id":"112", "pId":"11", "name":"项目列表",  "page":"/projectList"},
+	{ "id":"113", "pId":"11", "name":"项目问题","page":"/projectProblem"},
+	{ "id":"114", "pId":"11", "name":"设备需求", "page":"/projectEquipment"},
+	{ "id":"115", "pId":"11", "name":"项目人员","page":"/projectPersonnel"},
+	{ "id":"12", "pId":"0", "name":"项目记录"},
+	{ "id":"121", "pId":"12", "name":"项目日志" ,"page":"/projectRecord"},
+	{ "id":"122", "pId":"12", "name":"文档下载" ,"page":"/download"},
+	{ "id":"13", "pId":"0", "name":"设备管理"},
+	{ "id":"131", "pId":"13", "name":"设备列表","page":"/equipmentlist"},
+]

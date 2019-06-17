@@ -1,0 +1,259 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.jhun.dao.ImageMapper" >
+  <resultMap id="BaseResultMap" type="com.jhun.entity.Image" >
+    <id column="id" property="id" jdbcType="INTEGER" />
+    <result column="record_id" property="recordId" jdbcType="INTEGER" />
+    <result column="problem_id" property="problemId" jdbcType="INTEGER" />
+    <result column="equipment_id" property="equipmentId" jdbcType="INTEGER" />
+    <result column="equipmentSolution_id" property="equipmentsolutionId" jdbcType="INTEGER" />
+    <result column="imagesUrl" property="imagesurl" jdbcType="VARCHAR" />
+    <result column="imgSHA" property="imgsha" jdbcType="VARCHAR" />
+    <result column="attachmentUrl" property="attachmenturl" jdbcType="VARCHAR" />
+    <result column="attachmentSHA" property="attachmentsha" jdbcType="VARCHAR" />
+    <result column="create_time" property="createTime" jdbcType="TIMESTAMP" />
+    <result column="productException_id" property="productexceptionId" jdbcType="INTEGER" />
+    <result column="configSystem_id" property="configsystemId" jdbcType="INTEGER" />
+    <result column="documentUrl" property="documenturl" jdbcType="VARCHAR" />
+    <result column="documentSHA" property="documentsha" jdbcType="VARCHAR" />
+    <result column="batUrl" property="baturl" jdbcType="VARCHAR" />
+    <result column="batSHA" property="batsha" jdbcType="VARCHAR" />
+    <result column="databaseUrl" property="databaseurl" jdbcType="VARCHAR" />
+    <result column="databaseSHA" property="databasesha" jdbcType="VARCHAR" />
+    <result column="instrument_id" property="instrumentId" jdbcType="INTEGER" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    id, record_id, problem_id, equipment_id, equipmentSolution_id, imagesUrl, imgSHA, 
+    attachmentUrl, attachmentSHA, create_time, productException_id, configSystem_id, 
+    documentUrl, documentSHA, batUrl, batSHA, databaseUrl, databaseSHA, instrument_id
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+    select 
+    <include refid="Base_Column_List" />
+    from p_image
+    where id = #{id,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
+    delete from p_image
+    where id = #{id,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.jhun.entity.Image" >
+    insert into p_image (id, record_id, problem_id, 
+      equipment_id, equipmentSolution_id, imagesUrl, 
+      imgSHA, attachmentUrl, attachmentSHA, 
+      create_time, productException_id, configSystem_id, 
+      documentUrl, documentSHA, batUrl, 
+      batSHA, databaseUrl, databaseSHA, 
+      instrument_id)
+    values (#{id,jdbcType=INTEGER}, #{recordId,jdbcType=INTEGER}, #{problemId,jdbcType=INTEGER}, 
+      #{equipmentId,jdbcType=INTEGER}, #{equipmentsolutionId,jdbcType=INTEGER}, #{imagesurl,jdbcType=VARCHAR}, 
+      #{imgsha,jdbcType=VARCHAR}, #{attachmenturl,jdbcType=VARCHAR}, #{attachmentsha,jdbcType=VARCHAR}, 
+      #{createTime,jdbcType=TIMESTAMP}, #{productexceptionId,jdbcType=INTEGER}, #{configsystemId,jdbcType=INTEGER}, 
+      #{documenturl,jdbcType=VARCHAR}, #{documentsha,jdbcType=VARCHAR}, #{baturl,jdbcType=VARCHAR}, 
+      #{batsha,jdbcType=VARCHAR}, #{databaseurl,jdbcType=VARCHAR}, #{databasesha,jdbcType=VARCHAR}, 
+      #{instrumentId,jdbcType=INTEGER})
+  </insert>
+  <insert id="insertSelective" parameterType="com.jhun.entity.Image" >
+    insert into p_image
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        id,
+      </if>
+      <if test="recordId != null" >
+        record_id,
+      </if>
+      <if test="problemId != null" >
+        problem_id,
+      </if>
+      <if test="equipmentId != null" >
+        equipment_id,
+      </if>
+      <if test="equipmentsolutionId != null" >
+        equipmentSolution_id,
+      </if>
+      <if test="imagesurl != null" >
+        imagesUrl,
+      </if>
+      <if test="imgsha != null" >
+        imgSHA,
+      </if>
+      <if test="attachmenturl != null" >
+        attachmentUrl,
+      </if>
+      <if test="attachmentsha != null" >
+        attachmentSHA,
+      </if>
+      <if test="createTime != null" >
+        create_time,
+      </if>
+      <if test="productexceptionId != null" >
+        productException_id,
+      </if>
+      <if test="configsystemId != null" >
+        configSystem_id,
+      </if>
+      <if test="documenturl != null" >
+        documentUrl,
+      </if>
+      <if test="documentsha != null" >
+        documentSHA,
+      </if>
+      <if test="baturl != null" >
+        batUrl,
+      </if>
+      <if test="batsha != null" >
+        batSHA,
+      </if>
+      <if test="databaseurl != null" >
+        databaseUrl,
+      </if>
+      <if test="databasesha != null" >
+        databaseSHA,
+      </if>
+      <if test="instrumentId != null" >
+        instrument_id,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        #{id,jdbcType=INTEGER},
+      </if>
+      <if test="recordId != null" >
+        #{recordId,jdbcType=INTEGER},
+      </if>
+      <if test="problemId != null" >
+        #{problemId,jdbcType=INTEGER},
+      </if>
+      <if test="equipmentId != null" >
+        #{equipmentId,jdbcType=INTEGER},
+      </if>
+      <if test="equipmentsolutionId != null" >
+        #{equipmentsolutionId,jdbcType=INTEGER},
+      </if>
+      <if test="imagesurl != null" >
+        #{imagesurl,jdbcType=VARCHAR},
+      </if>
+      <if test="imgsha != null" >
+        #{imgsha,jdbcType=VARCHAR},
+      </if>
+      <if test="attachmenturl != null" >
+        #{attachmenturl,jdbcType=VARCHAR},
+      </if>
+      <if test="attachmentsha != null" >
+        #{attachmentsha,jdbcType=VARCHAR},
+      </if>
+      <if test="createTime != null" >
+        #{createTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="productexceptionId != null" >
+        #{productexceptionId,jdbcType=INTEGER},
+      </if>
+      <if test="configsystemId != null" >
+        #{configsystemId,jdbcType=INTEGER},
+      </if>
+      <if test="documenturl != null" >
+        #{documenturl,jdbcType=VARCHAR},
+      </if>
+      <if test="documentsha != null" >
+        #{documentsha,jdbcType=VARCHAR},
+      </if>
+      <if test="baturl != null" >
+        #{baturl,jdbcType=VARCHAR},
+      </if>
+      <if test="batsha != null" >
+        #{batsha,jdbcType=VARCHAR},
+      </if>
+      <if test="databaseurl != null" >
+        #{databaseurl,jdbcType=VARCHAR},
+      </if>
+      <if test="databasesha != null" >
+        #{databasesha,jdbcType=VARCHAR},
+      </if>
+      <if test="instrumentId != null" >
+        #{instrumentId,jdbcType=INTEGER},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.jhun.entity.Image" >
+    update p_image
+    <set >
+      <if test="recordId != null" >
+        record_id = #{recordId,jdbcType=INTEGER},
+      </if>
+      <if test="problemId != null" >
+        problem_id = #{problemId,jdbcType=INTEGER},
+      </if>
+      <if test="equipmentId != null" >
+        equipment_id = #{equipmentId,jdbcType=INTEGER},
+      </if>
+      <if test="equipmentsolutionId != null" >
+        equipmentSolution_id = #{equipmentsolutionId,jdbcType=INTEGER},
+      </if>
+      <if test="imagesurl != null" >
+        imagesUrl = #{imagesurl,jdbcType=VARCHAR},
+      </if>
+      <if test="imgsha != null" >
+        imgSHA = #{imgsha,jdbcType=VARCHAR},
+      </if>
+      <if test="attachmenturl != null" >
+        attachmentUrl = #{attachmenturl,jdbcType=VARCHAR},
+      </if>
+      <if test="attachmentsha != null" >
+        attachmentSHA = #{attachmentsha,jdbcType=VARCHAR},
+      </if>
+      <if test="createTime != null" >
+        create_time = #{createTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="productexceptionId != null" >
+        productException_id = #{productexceptionId,jdbcType=INTEGER},
+      </if>
+      <if test="configsystemId != null" >
+        configSystem_id = #{configsystemId,jdbcType=INTEGER},
+      </if>
+      <if test="documenturl != null" >
+        documentUrl = #{documenturl,jdbcType=VARCHAR},
+      </if>
+      <if test="documentsha != null" >
+        documentSHA = #{documentsha,jdbcType=VARCHAR},
+      </if>
+      <if test="baturl != null" >
+        batUrl = #{baturl,jdbcType=VARCHAR},
+      </if>
+      <if test="batsha != null" >
+        batSHA = #{batsha,jdbcType=VARCHAR},
+      </if>
+      <if test="databaseurl != null" >
+        databaseUrl = #{databaseurl,jdbcType=VARCHAR},
+      </if>
+      <if test="databasesha != null" >
+        databaseSHA = #{databasesha,jdbcType=VARCHAR},
+      </if>
+      <if test="instrumentId != null" >
+        instrument_id = #{instrumentId,jdbcType=INTEGER},
+      </if>
+    </set>
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.jhun.entity.Image" >
+    update p_image
+    set record_id = #{recordId,jdbcType=INTEGER},
+      problem_id = #{problemId,jdbcType=INTEGER},
+      equipment_id = #{equipmentId,jdbcType=INTEGER},
+      equipmentSolution_id = #{equipmentsolutionId,jdbcType=INTEGER},
+      imagesUrl = #{imagesurl,jdbcType=VARCHAR},
+      imgSHA = #{imgsha,jdbcType=VARCHAR},
+      attachmentUrl = #{attachmenturl,jdbcType=VARCHAR},
+      attachmentSHA = #{attachmentsha,jdbcType=VARCHAR},
+      create_time = #{createTime,jdbcType=TIMESTAMP},
+      productException_id = #{productexceptionId,jdbcType=INTEGER},
+      configSystem_id = #{configsystemId,jdbcType=INTEGER},
+      documentUrl = #{documenturl,jdbcType=VARCHAR},
+      documentSHA = #{documentsha,jdbcType=VARCHAR},
+      batUrl = #{baturl,jdbcType=VARCHAR},
+      batSHA = #{batsha,jdbcType=VARCHAR},
+      databaseUrl = #{databaseurl,jdbcType=VARCHAR},
+      databaseSHA = #{databasesha,jdbcType=VARCHAR},
+      instrument_id = #{instrumentId,jdbcType=INTEGER}
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+</mapper>

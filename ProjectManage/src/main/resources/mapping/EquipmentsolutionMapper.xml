@@ -1,0 +1,153 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.jhun.dao.EquipmentsolutionMapper" >
+  <resultMap id="BaseResultMap" type="com.jhun.entity.Equipmentsolution" >
+    <id column="id" property="id" jdbcType="INTEGER" />
+    <result column="equipment_id" property="equipmentId" jdbcType="INTEGER" />
+    <result column="equipment_name" property="equipmentName" jdbcType="VARCHAR" />
+    <result column="equipment_describe" property="equipmentDescribe" jdbcType="VARCHAR" />
+    <result column="equipment_state" property="equipmentState" jdbcType="VARCHAR" />
+    <result column="equipment_handler_department" property="equipmentHandlerDepartment" jdbcType="VARCHAR" />
+    <result column="equipment_handler" property="equipmentHandler" jdbcType="VARCHAR" />
+    <result column="founder" property="founder" jdbcType="VARCHAR" />
+    <result column="create_time" property="createTime" jdbcType="TIMESTAMP" />
+    <result column="copySender" property="copysender" jdbcType="VARCHAR" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    id, equipment_id, equipment_name, equipment_describe, equipment_state, equipment_handler_department, 
+    equipment_handler, founder, create_time, copySender
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+    select 
+    <include refid="Base_Column_List" />
+    from p_equipmentsolution
+    where id = #{id,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
+    delete from p_equipmentsolution
+    where id = #{id,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.jhun.entity.Equipmentsolution" >
+    insert into p_equipmentsolution (id, equipment_id, equipment_name, 
+      equipment_describe, equipment_state, equipment_handler_department, 
+      equipment_handler, founder, create_time, 
+      copySender)
+    values (#{id,jdbcType=INTEGER}, #{equipmentId,jdbcType=INTEGER}, #{equipmentName,jdbcType=VARCHAR}, 
+      #{equipmentDescribe,jdbcType=VARCHAR}, #{equipmentState,jdbcType=VARCHAR}, #{equipmentHandlerDepartment,jdbcType=VARCHAR}, 
+      #{equipmentHandler,jdbcType=VARCHAR}, #{founder,jdbcType=VARCHAR}, #{createTime,jdbcType=TIMESTAMP}, 
+      #{copysender,jdbcType=VARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="com.jhun.entity.Equipmentsolution" >
+    insert into p_equipmentsolution
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        id,
+      </if>
+      <if test="equipmentId != null" >
+        equipment_id,
+      </if>
+      <if test="equipmentName != null" >
+        equipment_name,
+      </if>
+      <if test="equipmentDescribe != null" >
+        equipment_describe,
+      </if>
+      <if test="equipmentState != null" >
+        equipment_state,
+      </if>
+      <if test="equipmentHandlerDepartment != null" >
+        equipment_handler_department,
+      </if>
+      <if test="equipmentHandler != null" >
+        equipment_handler,
+      </if>
+      <if test="founder != null" >
+        founder,
+      </if>
+      <if test="createTime != null" >
+        create_time,
+      </if>
+      <if test="copysender != null" >
+        copySender,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        #{id,jdbcType=INTEGER},
+      </if>
+      <if test="equipmentId != null" >
+        #{equipmentId,jdbcType=INTEGER},
+      </if>
+      <if test="equipmentName != null" >
+        #{equipmentName,jdbcType=VARCHAR},
+      </if>
+      <if test="equipmentDescribe != null" >
+        #{equipmentDescribe,jdbcType=VARCHAR},
+      </if>
+      <if test="equipmentState != null" >
+        #{equipmentState,jdbcType=VARCHAR},
+      </if>
+      <if test="equipmentHandlerDepartment != null" >
+        #{equipmentHandlerDepartment,jdbcType=VARCHAR},
+      </if>
+      <if test="equipmentHandler != null" >
+        #{equipmentHandler,jdbcType=VARCHAR},
+      </if>
+      <if test="founder != null" >
+        #{founder,jdbcType=VARCHAR},
+      </if>
+      <if test="createTime != null" >
+        #{createTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="copysender != null" >
+        #{copysender,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.jhun.entity.Equipmentsolution" >
+    update p_equipmentsolution
+    <set >
+      <if test="equipmentId != null" >
+        equipment_id = #{equipmentId,jdbcType=INTEGER},
+      </if>
+      <if test="equipmentName != null" >
+        equipment_name = #{equipmentName,jdbcType=VARCHAR},
+      </if>
+      <if test="equipmentDescribe != null" >
+        equipment_describe = #{equipmentDescribe,jdbcType=VARCHAR},
+      </if>
+      <if test="equipmentState != null" >
+        equipment_state = #{equipmentState,jdbcType=VARCHAR},
+      </if>
+      <if test="equipmentHandlerDepartment != null" >
+        equipment_handler_department = #{equipmentHandlerDepartment,jdbcType=VARCHAR},
+      </if>
+      <if test="equipmentHandler != null" >
+        equipment_handler = #{equipmentHandler,jdbcType=VARCHAR},
+      </if>
+      <if test="founder != null" >
+        founder = #{founder,jdbcType=VARCHAR},
+      </if>
+      <if test="createTime != null" >
+        create_time = #{createTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="copysender != null" >
+        copySender = #{copysender,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.jhun.entity.Equipmentsolution" >
+    update p_equipmentsolution
+    set equipment_id = #{equipmentId,jdbcType=INTEGER},
+      equipment_name = #{equipmentName,jdbcType=VARCHAR},
+      equipment_describe = #{equipmentDescribe,jdbcType=VARCHAR},
+      equipment_state = #{equipmentState,jdbcType=VARCHAR},
+      equipment_handler_department = #{equipmentHandlerDepartment,jdbcType=VARCHAR},
+      equipment_handler = #{equipmentHandler,jdbcType=VARCHAR},
+      founder = #{founder,jdbcType=VARCHAR},
+      create_time = #{createTime,jdbcType=TIMESTAMP},
+      copySender = #{copysender,jdbcType=VARCHAR}
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+</mapper>

@@ -1,0 +1,128 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.jhun.dao.MessagereleaseMapper" >
+  <resultMap id="BaseResultMap" type="com.jhun.entity.Messagerelease" >
+    <id column="id" property="id" jdbcType="INTEGER" />
+    <result column="content" property="content" jdbcType="VARCHAR" />
+    <result column="actionUrl" property="actionurl" jdbcType="VARCHAR" />
+    <result column="relationId" property="relationid" jdbcType="VARCHAR" />
+    <result column="herfAjax" property="herfajax" jdbcType="INTEGER" />
+    <result column="showHide" property="showhide" jdbcType="INTEGER" />
+    <result column="founder" property="founder" jdbcType="VARCHAR" />
+    <result column="create_time" property="createTime" jdbcType="TIMESTAMP" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    id, content, actionUrl, relationId, herfAjax, showHide, founder, create_time
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+    select 
+    <include refid="Base_Column_List" />
+    from p_messagerelease
+    where id = #{id,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
+    delete from p_messagerelease
+    where id = #{id,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.jhun.entity.Messagerelease" >
+    insert into p_messagerelease (id, content, actionUrl, 
+      relationId, herfAjax, showHide, 
+      founder, create_time)
+    values (#{id,jdbcType=INTEGER}, #{content,jdbcType=VARCHAR}, #{actionurl,jdbcType=VARCHAR}, 
+      #{relationid,jdbcType=VARCHAR}, #{herfajax,jdbcType=INTEGER}, #{showhide,jdbcType=INTEGER}, 
+      #{founder,jdbcType=VARCHAR}, #{createTime,jdbcType=TIMESTAMP})
+  </insert>
+  <insert id="insertSelective" parameterType="com.jhun.entity.Messagerelease" >
+    insert into p_messagerelease
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        id,
+      </if>
+      <if test="content != null" >
+        content,
+      </if>
+      <if test="actionurl != null" >
+        actionUrl,
+      </if>
+      <if test="relationid != null" >
+        relationId,
+      </if>
+      <if test="herfajax != null" >
+        herfAjax,
+      </if>
+      <if test="showhide != null" >
+        showHide,
+      </if>
+      <if test="founder != null" >
+        founder,
+      </if>
+      <if test="createTime != null" >
+        create_time,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        #{id,jdbcType=INTEGER},
+      </if>
+      <if test="content != null" >
+        #{content,jdbcType=VARCHAR},
+      </if>
+      <if test="actionurl != null" >
+        #{actionurl,jdbcType=VARCHAR},
+      </if>
+      <if test="relationid != null" >
+        #{relationid,jdbcType=VARCHAR},
+      </if>
+      <if test="herfajax != null" >
+        #{herfajax,jdbcType=INTEGER},
+      </if>
+      <if test="showhide != null" >
+        #{showhide,jdbcType=INTEGER},
+      </if>
+      <if test="founder != null" >
+        #{founder,jdbcType=VARCHAR},
+      </if>
+      <if test="createTime != null" >
+        #{createTime,jdbcType=TIMESTAMP},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.jhun.entity.Messagerelease" >
+    update p_messagerelease
+    <set >
+      <if test="content != null" >
+        content = #{content,jdbcType=VARCHAR},
+      </if>
+      <if test="actionurl != null" >
+        actionUrl = #{actionurl,jdbcType=VARCHAR},
+      </if>
+      <if test="relationid != null" >
+        relationId = #{relationid,jdbcType=VARCHAR},
+      </if>
+      <if test="herfajax != null" >
+        herfAjax = #{herfajax,jdbcType=INTEGER},
+      </if>
+      <if test="showhide != null" >
+        showHide = #{showhide,jdbcType=INTEGER},
+      </if>
+      <if test="founder != null" >
+        founder = #{founder,jdbcType=VARCHAR},
+      </if>
+      <if test="createTime != null" >
+        create_time = #{createTime,jdbcType=TIMESTAMP},
+      </if>
+    </set>
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.jhun.entity.Messagerelease" >
+    update p_messagerelease
+    set content = #{content,jdbcType=VARCHAR},
+      actionUrl = #{actionurl,jdbcType=VARCHAR},
+      relationId = #{relationid,jdbcType=VARCHAR},
+      herfAjax = #{herfajax,jdbcType=INTEGER},
+      showHide = #{showhide,jdbcType=INTEGER},
+      founder = #{founder,jdbcType=VARCHAR},
+      create_time = #{createTime,jdbcType=TIMESTAMP}
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+</mapper>

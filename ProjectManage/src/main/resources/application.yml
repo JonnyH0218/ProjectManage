@@ -1,0 +1,42 @@
+server:
+  port: 8080
+
+
+spring:
+  mvc:
+    view:
+      prefix: /WEB-INF/jsp/
+      suffix: .jsp
+  #数据库配置
+  datasource:
+    url: jdbc:mysql://localhost:3306/project_manage?useUnicode=true&characterEncoding=UTF-8&serverTimezone=UTC
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    username: root
+    password: root
+  mail:
+    host: smtp.mxhichina.com
+    port: 25
+    username: g-project@galaxis.com.cn
+    password: Gproject1234
+    default-encoding: utf-8
+#mybatis配置
+mybatis:
+  mapper-locations: classpath:mapping/*.xml  #注意：一定要对应mapper映射xml文件的所在路径
+  type-aliases-package: com.jhun.entity  # 注意：对应实体类的路径
+  configuration:
+    og-impl: org.apache.ibatis.logging.stdout.StdOutImpl
+# 分页配置
+pagehelper:
+  helper-dialect: mysql
+  reasonable: true
+  support-methods-arguments: true
+  params: count=countSql
+
+#控制台打印，包含sql语句
+logging:
+  path:
+    config: classpath:logback-spring.xml
+  level:
+    com.jhun.dao: DEBUG
+
+

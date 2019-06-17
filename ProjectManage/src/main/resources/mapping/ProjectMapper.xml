@@ -1,0 +1,386 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.jhun.dao.ProjectMapper" >
+  <resultMap id="BaseResultMap" type="com.jhun.entity.Project" >
+    <id column="id" property="id" jdbcType="INTEGER" />
+    <result column="project_name" property="projectName" jdbcType="VARCHAR" />
+    <result column="sign_adress" property="signAdress" jdbcType="VARCHAR" />
+    <result column="sign_time" property="signTime" jdbcType="TIMESTAMP" />
+    <result column="confirm_time" property="confirmTime" jdbcType="TIMESTAMP" />
+    <result column="finish_time" property="finishTime" jdbcType="TIMESTAMP" />
+    <result column="production_startTime" property="productionStarttime" jdbcType="TIMESTAMP" />
+    <result column="production_endTime" property="productionEndtime" jdbcType="TIMESTAMP" />
+    <result column="approach_time" property="approachTime" jdbcType="TIMESTAMP" />
+    <result column="install_time" property="installTime" jdbcType="TIMESTAMP" />
+    <result column="aloneDebug_startTime" property="alonedebugStarttime" jdbcType="TIMESTAMP" />
+    <result column="aloneDebug_endTime" property="alonedebugEndtime" jdbcType="TIMESTAMP" />
+    <result column="onlineDebug_startTime" property="onlinedebugStarttime" jdbcType="TIMESTAMP" />
+    <result column="accompany_startTime" property="accompanyStarttime" jdbcType="TIMESTAMP" />
+    <result column="accompany_endTime" property="accompanyEndtime" jdbcType="TIMESTAMP" />
+    <result column="check_startTime" property="checkStarttime" jdbcType="TIMESTAMP" />
+    <result column="check_endTime" property="checkEndtime" jdbcType="TIMESTAMP" />
+    <result column="project_state" property="projectState" jdbcType="VARCHAR" />
+    <result column="project_charger" property="projectCharger" jdbcType="VARCHAR" />
+    <result column="founder" property="founder" jdbcType="VARCHAR" />
+    <result column="creat_time" property="creatTime" jdbcType="TIMESTAMP" />
+    <result column="reguire_flashTotal" property="reguireFlashtotal" jdbcType="INTEGER" />
+    <result column="reguire_liftTotal" property="reguireLifttotal" jdbcType="INTEGER" />
+    <result column="project_describe" property="projectDescribe" jdbcType="VARCHAR" />
+    <result column="implementation_address" property="implementationAddress" jdbcType="VARCHAR" />
+    <result column="customer" property="customer" jdbcType="VARCHAR" />
+    <result column="customer_contact" property="customerContact" jdbcType="VARCHAR" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    id, project_name, sign_adress, sign_time, confirm_time, finish_time, production_startTime, 
+    production_endTime, approach_time, install_time, aloneDebug_startTime, aloneDebug_endTime, 
+    onlineDebug_startTime, accompany_startTime, accompany_endTime, check_startTime, check_endTime, 
+    project_state, project_charger, founder, creat_time, reguire_flashTotal, reguire_liftTotal, 
+    project_describe, implementation_address, customer, customer_contact
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+    select 
+    <include refid="Base_Column_List" />
+    from p_project
+    where id = #{id,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
+    delete from p_project
+    where id = #{id,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.jhun.entity.Project" >
+    insert into p_project (id, project_name, sign_adress, 
+      sign_time, confirm_time, finish_time, 
+      production_startTime, production_endTime, 
+      approach_time, install_time, aloneDebug_startTime, 
+      aloneDebug_endTime, onlineDebug_startTime, 
+      accompany_startTime, accompany_endTime, 
+      check_startTime, check_endTime, project_state, 
+      project_charger, founder, creat_time, 
+      reguire_flashTotal, reguire_liftTotal, project_describe, 
+      implementation_address, customer, customer_contact
+      )
+    values (#{id,jdbcType=INTEGER}, #{projectName,jdbcType=VARCHAR}, #{signAdress,jdbcType=VARCHAR}, 
+      #{signTime,jdbcType=TIMESTAMP}, #{confirmTime,jdbcType=TIMESTAMP}, #{finishTime,jdbcType=TIMESTAMP}, 
+      #{productionStarttime,jdbcType=TIMESTAMP}, #{productionEndtime,jdbcType=TIMESTAMP}, 
+      #{approachTime,jdbcType=TIMESTAMP}, #{installTime,jdbcType=TIMESTAMP}, #{alonedebugStarttime,jdbcType=TIMESTAMP}, 
+      #{alonedebugEndtime,jdbcType=TIMESTAMP}, #{onlinedebugStarttime,jdbcType=TIMESTAMP}, 
+      #{accompanyStarttime,jdbcType=TIMESTAMP}, #{accompanyEndtime,jdbcType=TIMESTAMP}, 
+      #{checkStarttime,jdbcType=TIMESTAMP}, #{checkEndtime,jdbcType=TIMESTAMP}, #{projectState,jdbcType=VARCHAR}, 
+      #{projectCharger,jdbcType=VARCHAR}, #{founder,jdbcType=VARCHAR}, #{creatTime,jdbcType=TIMESTAMP}, 
+      #{reguireFlashtotal,jdbcType=INTEGER}, #{reguireLifttotal,jdbcType=INTEGER}, #{projectDescribe,jdbcType=VARCHAR}, 
+      #{implementationAddress,jdbcType=VARCHAR}, #{customer,jdbcType=VARCHAR}, #{customerContact,jdbcType=VARCHAR}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="com.jhun.entity.Project" >
+    insert into p_project
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        id,
+      </if>
+      <if test="projectName != null" >
+        project_name,
+      </if>
+      <if test="signAdress != null" >
+        sign_adress,
+      </if>
+      <if test="signTime != null" >
+        sign_time,
+      </if>
+      <if test="confirmTime != null" >
+        confirm_time,
+      </if>
+      <if test="finishTime != null" >
+        finish_time,
+      </if>
+      <if test="productionStarttime != null" >
+        production_startTime,
+      </if>
+      <if test="productionEndtime != null" >
+        production_endTime,
+      </if>
+      <if test="approachTime != null" >
+        approach_time,
+      </if>
+      <if test="installTime != null" >
+        install_time,
+      </if>
+      <if test="alonedebugStarttime != null" >
+        aloneDebug_startTime,
+      </if>
+      <if test="alonedebugEndtime != null" >
+        aloneDebug_endTime,
+      </if>
+      <if test="onlinedebugStarttime != null" >
+        onlineDebug_startTime,
+      </if>
+      <if test="accompanyStarttime != null" >
+        accompany_startTime,
+      </if>
+      <if test="accompanyEndtime != null" >
+        accompany_endTime,
+      </if>
+      <if test="checkStarttime != null" >
+        check_startTime,
+      </if>
+      <if test="checkEndtime != null" >
+        check_endTime,
+      </if>
+      <if test="projectState != null" >
+        project_state,
+      </if>
+      <if test="projectCharger != null" >
+        project_charger,
+      </if>
+      <if test="founder != null" >
+        founder,
+      </if>
+      <if test="creatTime != null" >
+        creat_time,
+      </if>
+      <if test="reguireFlashtotal != null" >
+        reguire_flashTotal,
+      </if>
+      <if test="reguireLifttotal != null" >
+        reguire_liftTotal,
+      </if>
+      <if test="projectDescribe != null" >
+        project_describe,
+      </if>
+      <if test="implementationAddress != null" >
+        implementation_address,
+      </if>
+      <if test="customer != null" >
+        customer,
+      </if>
+      <if test="customerContact != null" >
+        customer_contact,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        #{id,jdbcType=INTEGER},
+      </if>
+      <if test="projectName != null" >
+        #{projectName,jdbcType=VARCHAR},
+      </if>
+      <if test="signAdress != null" >
+        #{signAdress,jdbcType=VARCHAR},
+      </if>
+      <if test="signTime != null" >
+        #{signTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="confirmTime != null" >
+        #{confirmTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="finishTime != null" >
+        #{finishTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="productionStarttime != null" >
+        #{productionStarttime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="productionEndtime != null" >
+        #{productionEndtime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="approachTime != null" >
+        #{approachTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="installTime != null" >
+        #{installTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="alonedebugStarttime != null" >
+        #{alonedebugStarttime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="alonedebugEndtime != null" >
+        #{alonedebugEndtime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="onlinedebugStarttime != null" >
+        #{onlinedebugStarttime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="accompanyStarttime != null" >
+        #{accompanyStarttime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="accompanyEndtime != null" >
+        #{accompanyEndtime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="checkStarttime != null" >
+        #{checkStarttime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="checkEndtime != null" >
+        #{checkEndtime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="projectState != null" >
+        #{projectState,jdbcType=VARCHAR},
+      </if>
+      <if test="projectCharger != null" >
+        #{projectCharger,jdbcType=VARCHAR},
+      </if>
+      <if test="founder != null" >
+        #{founder,jdbcType=VARCHAR},
+      </if>
+      <if test="creatTime != null" >
+        #{creatTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="reguireFlashtotal != null" >
+        #{reguireFlashtotal,jdbcType=INTEGER},
+      </if>
+      <if test="reguireLifttotal != null" >
+        #{reguireLifttotal,jdbcType=INTEGER},
+      </if>
+      <if test="projectDescribe != null" >
+        #{projectDescribe,jdbcType=VARCHAR},
+      </if>
+      <if test="implementationAddress != null" >
+        #{implementationAddress,jdbcType=VARCHAR},
+      </if>
+      <if test="customer != null" >
+        #{customer,jdbcType=VARCHAR},
+      </if>
+      <if test="customerContact != null" >
+        #{customerContact,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.jhun.entity.Project" >
+    update p_project
+    <set >
+      <if test="projectName != null" >
+        project_name = #{projectName,jdbcType=VARCHAR},
+      </if>
+      <if test="signAdress != null" >
+        sign_adress = #{signAdress,jdbcType=VARCHAR},
+      </if>
+      <if test="signTime != null" >
+        sign_time = #{signTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="confirmTime != null" >
+        confirm_time = #{confirmTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="finishTime != null" >
+        finish_time = #{finishTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="productionStarttime != null" >
+        production_startTime = #{productionStarttime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="productionEndtime != null" >
+        production_endTime = #{productionEndtime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="approachTime != null" >
+        approach_time = #{approachTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="installTime != null" >
+        install_time = #{installTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="alonedebugStarttime != null" >
+        aloneDebug_startTime = #{alonedebugStarttime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="alonedebugEndtime != null" >
+        aloneDebug_endTime = #{alonedebugEndtime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="onlinedebugStarttime != null" >
+        onlineDebug_startTime = #{onlinedebugStarttime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="accompanyStarttime != null" >
+        accompany_startTime = #{accompanyStarttime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="accompanyEndtime != null" >
+        accompany_endTime = #{accompanyEndtime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="checkStarttime != null" >
+        check_startTime = #{checkStarttime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="checkEndtime != null" >
+        check_endTime = #{checkEndtime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="projectState != null" >
+        project_state = #{projectState,jdbcType=VARCHAR},
+      </if>
+      <if test="projectCharger != null" >
+        project_charger = #{projectCharger,jdbcType=VARCHAR},
+      </if>
+      <if test="founder != null" >
+        founder = #{founder,jdbcType=VARCHAR},
+      </if>
+      <if test="creatTime != null" >
+        creat_time = #{creatTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="reguireFlashtotal != null" >
+        reguire_flashTotal = #{reguireFlashtotal,jdbcType=INTEGER},
+      </if>
+      <if test="reguireLifttotal != null" >
+        reguire_liftTotal = #{reguireLifttotal,jdbcType=INTEGER},
+      </if>
+      <if test="projectDescribe != null" >
+        project_describe = #{projectDescribe,jdbcType=VARCHAR},
+      </if>
+      <if test="implementationAddress != null" >
+        implementation_address = #{implementationAddress,jdbcType=VARCHAR},
+      </if>
+      <if test="customer != null" >
+        customer = #{customer,jdbcType=VARCHAR},
+      </if>
+      <if test="customerContact != null" >
+        customer_contact = #{customerContact,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.jhun.entity.Project" >
+    update p_project
+    set project_name = #{projectName,jdbcType=VARCHAR},
+      sign_adress = #{signAdress,jdbcType=VARCHAR},
+      sign_time = #{signTime,jdbcType=TIMESTAMP},
+      confirm_time = #{confirmTime,jdbcType=TIMESTAMP},
+      finish_time = #{finishTime,jdbcType=TIMESTAMP},
+      production_startTime = #{productionStarttime,jdbcType=TIMESTAMP},
+      production_endTime = #{productionEndtime,jdbcType=TIMESTAMP},
+      approach_time = #{approachTime,jdbcType=TIMESTAMP},
+      install_time = #{installTime,jdbcType=TIMESTAMP},
+      aloneDebug_startTime = #{alonedebugStarttime,jdbcType=TIMESTAMP},
+      aloneDebug_endTime = #{alonedebugEndtime,jdbcType=TIMESTAMP},
+      onlineDebug_startTime = #{onlinedebugStarttime,jdbcType=TIMESTAMP},
+      accompany_startTime = #{accompanyStarttime,jdbcType=TIMESTAMP},
+      accompany_endTime = #{accompanyEndtime,jdbcType=TIMESTAMP},
+      check_startTime = #{checkStarttime,jdbcType=TIMESTAMP},
+      check_endTime = #{checkEndtime,jdbcType=TIMESTAMP},
+      project_state = #{projectState,jdbcType=VARCHAR},
+      project_charger = #{projectCharger,jdbcType=VARCHAR},
+      founder = #{founder,jdbcType=VARCHAR},
+      creat_time = #{creatTime,jdbcType=TIMESTAMP},
+      reguire_flashTotal = #{reguireFlashtotal,jdbcType=INTEGER},
+      reguire_liftTotal = #{reguireLifttotal,jdbcType=INTEGER},
+      project_describe = #{projectDescribe,jdbcType=VARCHAR},
+      implementation_address = #{implementationAddress,jdbcType=VARCHAR},
+      customer = #{customer,jdbcType=VARCHAR},
+      customer_contact = #{customerContact,jdbcType=VARCHAR}
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+  <!-- 查询所有 -->
+  <select id="selectAll" resultMap="BaseResultMap" parameterType="com.jhun.entity.Project" >
+    select * from p_project
+    where 1=1
+    <if test="projectName != null and projectName != ''">
+      and project_name = #{projectName}
+    </if>
+    <if test="projectState != null and projectState != ''">
+      and project_state = #{projectState}
+    </if>
+  </select>
+  <!-- 查询总数 -->
+  <select id="countItem" resultType="Integer" parameterType="com.jhun.entity.Project" >
+    select count(*)
+    from p_project
+    where 1=1
+      <if test="projectName != null and projectName != ''">
+         and project_name = #{projectName}
+      </if>
+      <if test="projectState != null and projectState != ''">
+        and project_state = #{projectState}
+      </if>
+  </select>
+  <!--根据项目名查询-->
+  <select id="selectByProjectName" resultMap="BaseResultMap" parameterType="java.lang.String">
+    select *
+    from p_project
+    where project_name = #{projectName}
+  </select>
+</mapper>

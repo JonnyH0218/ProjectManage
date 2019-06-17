@@ -1,0 +1,168 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.jhun.dao.RecordMapper" >
+  <resultMap id="BaseResultMap" type="com.jhun.entity.Record" >
+    <id column="id" property="id" jdbcType="INTEGER" />
+    <result column="project_name" property="projectName" jdbcType="VARCHAR" />
+    <result column="record_category" property="recordCategory" jdbcType="VARCHAR" />
+    <result column="project_charger" property="projectCharger" jdbcType="VARCHAR" />
+    <result column="create_time" property="createTime" jdbcType="TIMESTAMP" />
+    <result column="founder" property="founder" jdbcType="VARCHAR" />
+    <result column="copySender" property="copysender" jdbcType="VARCHAR" />
+  </resultMap>
+  <resultMap id="ResultMapWithBLOBs" type="com.jhun.entity.Record" extends="BaseResultMap" >
+    <result column="content" property="content" jdbcType="LONGVARCHAR" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    id, project_name, record_category, project_charger, create_time, founder, copySender
+  </sql>
+  <sql id="Blob_Column_List" >
+    content
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="ResultMapWithBLOBs" parameterType="java.lang.Integer" >
+    select 
+    <include refid="Base_Column_List" />
+    ,
+    <include refid="Blob_Column_List" />
+    from p_record
+    where id = #{id,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
+    delete from p_record
+    where id = #{id,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.jhun.entity.Record" >
+    insert into p_record (id, project_name, record_category, 
+      project_charger, create_time, founder, 
+      copySender, content)
+    values (#{id,jdbcType=INTEGER}, #{projectName,jdbcType=VARCHAR}, #{recordCategory,jdbcType=VARCHAR}, 
+      #{projectCharger,jdbcType=VARCHAR}, #{createTime,jdbcType=TIMESTAMP}, #{founder,jdbcType=VARCHAR}, 
+      #{copysender,jdbcType=VARCHAR}, #{content,jdbcType=LONGVARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="com.jhun.entity.Record" >
+    insert into p_record
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        id,
+      </if>
+      <if test="projectName != null" >
+        project_name,
+      </if>
+      <if test="recordCategory != null" >
+        record_category,
+      </if>
+      <if test="projectCharger != null" >
+        project_charger,
+      </if>
+      <if test="createTime != null" >
+        create_time,
+      </if>
+      <if test="founder != null" >
+        founder,
+      </if>
+      <if test="copysender != null" >
+        copySender,
+      </if>
+      <if test="content != null" >
+        content,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        #{id,jdbcType=INTEGER},
+      </if>
+      <if test="projectName != null" >
+        #{projectName,jdbcType=VARCHAR},
+      </if>
+      <if test="recordCategory != null" >
+        #{recordCategory,jdbcType=VARCHAR},
+      </if>
+      <if test="projectCharger != null" >
+        #{projectCharger,jdbcType=VARCHAR},
+      </if>
+      <if test="createTime != null" >
+        #{createTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="founder != null" >
+        #{founder,jdbcType=VARCHAR},
+      </if>
+      <if test="copysender != null" >
+        #{copysender,jdbcType=VARCHAR},
+      </if>
+      <if test="content != null" >
+        #{content,jdbcType=LONGVARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.jhun.entity.Record" >
+    update p_record
+    <set >
+      <if test="projectName != null" >
+        project_name = #{projectName,jdbcType=VARCHAR},
+      </if>
+      <if test="recordCategory != null" >
+        record_category = #{recordCategory,jdbcType=VARCHAR},
+      </if>
+      <if test="projectCharger != null" >
+        project_charger = #{projectCharger,jdbcType=VARCHAR},
+      </if>
+      <if test="createTime != null" >
+        create_time = #{createTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="founder != null" >
+        founder = #{founder,jdbcType=VARCHAR},
+      </if>
+      <if test="copysender != null" >
+        copySender = #{copysender,jdbcType=VARCHAR},
+      </if>
+      <if test="content != null" >
+        content = #{content,jdbcType=LONGVARCHAR},
+      </if>
+    </set>
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKeyWithBLOBs" parameterType="com.jhun.entity.Record" >
+    update p_record
+    set project_name = #{projectName,jdbcType=VARCHAR},
+      record_category = #{recordCategory,jdbcType=VARCHAR},
+      project_charger = #{projectCharger,jdbcType=VARCHAR},
+      create_time = #{createTime,jdbcType=TIMESTAMP},
+      founder = #{founder,jdbcType=VARCHAR},
+      copySender = #{copysender,jdbcType=VARCHAR},
+      content = #{content,jdbcType=LONGVARCHAR}
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.jhun.entity.Record" >
+    update p_record
+    set project_name = #{projectName,jdbcType=VARCHAR},
+      record_category = #{recordCategory,jdbcType=VARCHAR},
+      project_charger = #{projectCharger,jdbcType=VARCHAR},
+      create_time = #{createTime,jdbcType=TIMESTAMP},
+      founder = #{founder,jdbcType=VARCHAR},
+      copySender = #{copysender,jdbcType=VARCHAR}
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+  <!-- 查询所有 -->
+  <select id="selectAll" resultMap="BaseResultMap" parameterType="com.jhun.entity.Record" >
+    select * from p_record
+    where 1=1
+    <if test="projectName != null and projectName != ''">
+      and project_name = #{projectName}
+    </if>
+    <if test="recordCategory != null and recordCategory != ''">
+      and record_category = #{recordCategory}
+    </if>
+  </select>
+  <!-- 查询总数 -->
+  <select id="countItem" resultType="Integer" parameterType="com.jhun.entity.Record" >
+    select count(*)
+    from p_record
+    where 1=1
+    <if test="projectName != null and projectName != ''">
+      and project_name = #{projectName}
+    </if>
+    <if test="recordCategory != null and recordCategory != ''">
+      and record_category = #{recordCategory}
+    </if>
+  </select>
+</mapper>

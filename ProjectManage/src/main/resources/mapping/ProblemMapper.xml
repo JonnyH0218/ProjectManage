@@ -1,0 +1,225 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.jhun.dao.ProblemMapper" >
+  <resultMap id="BaseResultMap" type="com.jhun.entity.Problem" >
+    <id column="id" property="id" jdbcType="INTEGER" />
+    <result column="project_name" property="projectName" jdbcType="VARCHAR" />
+    <result column="project_assembly" property="projectAssembly" jdbcType="VARCHAR" />
+    <result column="problem_sketch" property="problemSketch" jdbcType="VARCHAR" />
+    <result column="problem_describe" property="problemDescribe" jdbcType="VARCHAR" />
+    <result column="problem_state" property="problemState" jdbcType="VARCHAR" />
+    <result column="problem_handler_department" property="problemHandlerDepartment" jdbcType="VARCHAR" />
+    <result column="problem_handler" property="problemHandler" jdbcType="VARCHAR" />
+    <result column="problem_priority" property="problemPriority" jdbcType="VARCHAR" />
+    <result column="founder" property="founder" jdbcType="VARCHAR" />
+    <result column="create_time" property="createTime" jdbcType="TIMESTAMP" />
+    <result column="copySender" property="copysender" jdbcType="VARCHAR" />
+    <result column="expect_time" property="expectTime" jdbcType="TIMESTAMP" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    id, project_name, project_assembly, problem_sketch, problem_describe, problem_state, 
+    problem_handler_department, problem_handler, problem_priority, founder, create_time, 
+    copySender, expect_time
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+    select 
+    <include refid="Base_Column_List" />
+    from p_problem
+    where id = #{id,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
+    delete from p_problem
+    where id = #{id,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.jhun.entity.Problem" >
+    insert into p_problem (id, project_name, project_assembly, 
+      problem_sketch, problem_describe, problem_state, 
+      problem_handler_department, problem_handler, 
+      problem_priority, founder, create_time, 
+      copySender, expect_time)
+    values (#{id,jdbcType=INTEGER}, #{projectName,jdbcType=VARCHAR}, #{projectAssembly,jdbcType=VARCHAR}, 
+      #{problemSketch,jdbcType=VARCHAR}, #{problemDescribe,jdbcType=VARCHAR}, #{problemState,jdbcType=VARCHAR}, 
+      #{problemHandlerDepartment,jdbcType=VARCHAR}, #{problemHandler,jdbcType=VARCHAR}, 
+      #{problemPriority,jdbcType=VARCHAR}, #{founder,jdbcType=VARCHAR}, #{createTime,jdbcType=TIMESTAMP}, 
+      #{copysender,jdbcType=VARCHAR}, #{expectTime,jdbcType=TIMESTAMP})
+  </insert>
+  <insert id="insertSelective" parameterType="com.jhun.entity.Problem" >
+    insert into p_problem
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        id,
+      </if>
+      <if test="projectName != null" >
+        project_name,
+      </if>
+      <if test="projectAssembly != null" >
+        project_assembly,
+      </if>
+      <if test="problemSketch != null" >
+        problem_sketch,
+      </if>
+      <if test="problemDescribe != null" >
+        problem_describe,
+      </if>
+      <if test="problemState != null" >
+        problem_state,
+      </if>
+      <if test="problemHandlerDepartment != null" >
+        problem_handler_department,
+      </if>
+      <if test="problemHandler != null" >
+        problem_handler,
+      </if>
+      <if test="problemPriority != null" >
+        problem_priority,
+      </if>
+      <if test="founder != null" >
+        founder,
+      </if>
+      <if test="createTime != null" >
+        create_time,
+      </if>
+      <if test="copysender != null" >
+        copySender,
+      </if>
+      <if test="expectTime != null" >
+        expect_time,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        #{id,jdbcType=INTEGER},
+      </if>
+      <if test="projectName != null" >
+        #{projectName,jdbcType=VARCHAR},
+      </if>
+      <if test="projectAssembly != null" >
+        #{projectAssembly,jdbcType=VARCHAR},
+      </if>
+      <if test="problemSketch != null" >
+        #{problemSketch,jdbcType=VARCHAR},
+      </if>
+      <if test="problemDescribe != null" >
+        #{problemDescribe,jdbcType=VARCHAR},
+      </if>
+      <if test="problemState != null" >
+        #{problemState,jdbcType=VARCHAR},
+      </if>
+      <if test="problemHandlerDepartment != null" >
+        #{problemHandlerDepartment,jdbcType=VARCHAR},
+      </if>
+      <if test="problemHandler != null" >
+        #{problemHandler,jdbcType=VARCHAR},
+      </if>
+      <if test="problemPriority != null" >
+        #{problemPriority,jdbcType=VARCHAR},
+      </if>
+      <if test="founder != null" >
+        #{founder,jdbcType=VARCHAR},
+      </if>
+      <if test="createTime != null" >
+        #{createTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="copysender != null" >
+        #{copysender,jdbcType=VARCHAR},
+      </if>
+      <if test="expectTime != null" >
+        #{expectTime,jdbcType=TIMESTAMP},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.jhun.entity.Problem" >
+    update p_problem
+    <set >
+      <if test="projectName != null" >
+        project_name = #{projectName,jdbcType=VARCHAR},
+      </if>
+      <if test="projectAssembly != null" >
+        project_assembly = #{projectAssembly,jdbcType=VARCHAR},
+      </if>
+      <if test="problemSketch != null" >
+        problem_sketch = #{problemSketch,jdbcType=VARCHAR},
+      </if>
+      <if test="problemDescribe != null" >
+        problem_describe = #{problemDescribe,jdbcType=VARCHAR},
+      </if>
+      <if test="problemState != null" >
+        problem_state = #{problemState,jdbcType=VARCHAR},
+      </if>
+      <if test="problemHandlerDepartment != null" >
+        problem_handler_department = #{problemHandlerDepartment,jdbcType=VARCHAR},
+      </if>
+      <if test="problemHandler != null" >
+        problem_handler = #{problemHandler,jdbcType=VARCHAR},
+      </if>
+      <if test="problemPriority != null" >
+        problem_priority = #{problemPriority,jdbcType=VARCHAR},
+      </if>
+      <if test="founder != null" >
+        founder = #{founder,jdbcType=VARCHAR},
+      </if>
+      <if test="createTime != null" >
+        create_time = #{createTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="copysender != null" >
+        copySender = #{copysender,jdbcType=VARCHAR},
+      </if>
+      <if test="expectTime != null" >
+        expect_time = #{expectTime,jdbcType=TIMESTAMP},
+      </if>
+    </set>
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.jhun.entity.Problem" >
+    update p_problem
+    set project_name = #{projectName,jdbcType=VARCHAR},
+      project_assembly = #{projectAssembly,jdbcType=VARCHAR},
+      problem_sketch = #{problemSketch,jdbcType=VARCHAR},
+      problem_describe = #{problemDescribe,jdbcType=VARCHAR},
+      problem_state = #{problemState,jdbcType=VARCHAR},
+      problem_handler_department = #{problemHandlerDepartment,jdbcType=VARCHAR},
+      problem_handler = #{problemHandler,jdbcType=VARCHAR},
+      problem_priority = #{problemPriority,jdbcType=VARCHAR},
+      founder = #{founder,jdbcType=VARCHAR},
+      create_time = #{createTime,jdbcType=TIMESTAMP},
+      copySender = #{copysender,jdbcType=VARCHAR},
+      expect_time = #{expectTime,jdbcType=TIMESTAMP}
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+  <!-- 查询所有 -->
+  <select id="selectAllProblemByPage" resultMap="BaseResultMap" parameterType="com.jhun.entity.Problem" >
+    select *
+    from p_problem
+    where 1=1
+    <if test="problemPriority != null and problemPriority != ''">
+      and problem_priority = #{problemPriority}
+    </if>
+    <if test="projectAssembly != null and projectAssembly != ''">
+      and project_assembly = #{projectAssembly}
+    </if>
+    <if test="problemState != null and problemState != ''">
+      and problem_state = #{problemState}
+    </if>
+    <if test="projectName != null and projectName != ''">
+      and project_name = #{projectName}
+    </if>
+  </select>
+  <!-- 查询总数 -->
+  <select id="countItem" resultType="Integer" parameterType="com.jhun.entity.Problem" >
+    select count(*)
+    from p_problem
+    where 1=1
+    <if test="problemPriority != null and problemPriority != ''">
+      and problem_priority = #{problemPriority}
+    </if>
+    <if test="projectAssembly != null and projectAssembly != ''">
+      and project_assembly = #{projectAssembly}
+    </if>
+    <if test="problemState != null and problemState != ''">
+      and problem_state = #{problemState}
+    </if>
+    <if test="projectName != null and projectName != ''">
+      and project_name = #{projectName}
+    </if>
+  </select>
+</mapper>

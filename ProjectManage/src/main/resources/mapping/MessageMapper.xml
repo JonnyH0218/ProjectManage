@@ -1,0 +1,238 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.jhun.dao.MessageMapper" >
+  <resultMap id="BaseResultMap" type="com.jhun.entity.Message" >
+    <id column="id" property="id" jdbcType="INTEGER" />
+    <result column="content" property="content" jdbcType="VARCHAR" />
+    <result column="actionUrl" property="actionurl" jdbcType="VARCHAR" />
+    <result column="relationId" property="relationid" jdbcType="VARCHAR" />
+    <result column="entity" property="entity" jdbcType="VARCHAR" />
+    <result column="herfAjax" property="herfajax" jdbcType="VARCHAR" />
+    <result column="messageRelease_id" property="messagereleaseId" jdbcType="INTEGER" />
+    <result column="message_state" property="messageState" jdbcType="VARCHAR" />
+    <result column="founder_check" property="founderCheck" jdbcType="INTEGER" />
+    <result column="handler_check" property="handlerCheck" jdbcType="INTEGER" />
+    <result column="refuse_reason" property="refuseReason" jdbcType="VARCHAR" />
+    <result column="relationfounder" property="relationfounder" jdbcType="VARCHAR" />
+    <result column="message_handler" property="messageHandler" jdbcType="VARCHAR" />
+    <result column="founder" property="founder" jdbcType="VARCHAR" />
+    <result column="create_time" property="createTime" jdbcType="TIMESTAMP" />
+    <result column="copySender" property="copysender" jdbcType="VARCHAR" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    id, content, actionUrl, relationId, entity, herfAjax, messageRelease_id, message_state, 
+    founder_check, handler_check, refuse_reason, relationfounder, message_handler, founder, 
+    create_time, copySender
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+    select 
+    <include refid="Base_Column_List" />
+    from p_message
+    where id = #{id,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
+    delete from p_message
+    where id = #{id,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.jhun.entity.Message" >
+    insert into p_message (id, content, actionUrl, 
+      relationId, entity, herfAjax, 
+      messageRelease_id, message_state, founder_check, 
+      handler_check, refuse_reason, relationfounder, 
+      message_handler, founder, create_time, 
+      copySender)
+    values (#{id,jdbcType=INTEGER}, #{content,jdbcType=VARCHAR}, #{actionurl,jdbcType=VARCHAR}, 
+      #{relationid,jdbcType=VARCHAR}, #{entity,jdbcType=VARCHAR}, #{herfajax,jdbcType=VARCHAR}, 
+      #{messagereleaseId,jdbcType=INTEGER}, #{messageState,jdbcType=VARCHAR}, #{founderCheck,jdbcType=INTEGER}, 
+      #{handlerCheck,jdbcType=INTEGER}, #{refuseReason,jdbcType=VARCHAR}, #{relationfounder,jdbcType=VARCHAR}, 
+      #{messageHandler,jdbcType=VARCHAR}, #{founder,jdbcType=VARCHAR}, #{createTime,jdbcType=TIMESTAMP}, 
+      #{copysender,jdbcType=VARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="com.jhun.entity.Message" >
+    insert into p_message
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        id,
+      </if>
+      <if test="content != null" >
+        content,
+      </if>
+      <if test="actionurl != null" >
+        actionUrl,
+      </if>
+      <if test="relationid != null" >
+        relationId,
+      </if>
+      <if test="entity != null" >
+        entity,
+      </if>
+      <if test="herfajax != null" >
+        herfAjax,
+      </if>
+      <if test="messagereleaseId != null" >
+        messageRelease_id,
+      </if>
+      <if test="messageState != null" >
+        message_state,
+      </if>
+      <if test="founderCheck != null" >
+        founder_check,
+      </if>
+      <if test="handlerCheck != null" >
+        handler_check,
+      </if>
+      <if test="refuseReason != null" >
+        refuse_reason,
+      </if>
+      <if test="relationfounder != null" >
+        relationfounder,
+      </if>
+      <if test="messageHandler != null" >
+        message_handler,
+      </if>
+      <if test="founder != null" >
+        founder,
+      </if>
+      <if test="createTime != null" >
+        create_time,
+      </if>
+      <if test="copysender != null" >
+        copySender,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        #{id,jdbcType=INTEGER},
+      </if>
+      <if test="content != null" >
+        #{content,jdbcType=VARCHAR},
+      </if>
+      <if test="actionurl != null" >
+        #{actionurl,jdbcType=VARCHAR},
+      </if>
+      <if test="relationid != null" >
+        #{relationid,jdbcType=VARCHAR},
+      </if>
+      <if test="entity != null" >
+        #{entity,jdbcType=VARCHAR},
+      </if>
+      <if test="herfajax != null" >
+        #{herfajax,jdbcType=VARCHAR},
+      </if>
+      <if test="messagereleaseId != null" >
+        #{messagereleaseId,jdbcType=INTEGER},
+      </if>
+      <if test="messageState != null" >
+        #{messageState,jdbcType=VARCHAR},
+      </if>
+      <if test="founderCheck != null" >
+        #{founderCheck,jdbcType=INTEGER},
+      </if>
+      <if test="handlerCheck != null" >
+        #{handlerCheck,jdbcType=INTEGER},
+      </if>
+      <if test="refuseReason != null" >
+        #{refuseReason,jdbcType=VARCHAR},
+      </if>
+      <if test="relationfounder != null" >
+        #{relationfounder,jdbcType=VARCHAR},
+      </if>
+      <if test="messageHandler != null" >
+        #{messageHandler,jdbcType=VARCHAR},
+      </if>
+      <if test="founder != null" >
+        #{founder,jdbcType=VARCHAR},
+      </if>
+      <if test="createTime != null" >
+        #{createTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="copysender != null" >
+        #{copysender,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.jhun.entity.Message" >
+    update p_message
+    <set >
+      <if test="content != null" >
+        content = #{content,jdbcType=VARCHAR},
+      </if>
+      <if test="actionurl != null" >
+        actionUrl = #{actionurl,jdbcType=VARCHAR},
+      </if>
+      <if test="relationid != null" >
+        relationId = #{relationid,jdbcType=VARCHAR},
+      </if>
+      <if test="entity != null" >
+        entity = #{entity,jdbcType=VARCHAR},
+      </if>
+      <if test="herfajax != null" >
+        herfAjax = #{herfajax,jdbcType=VARCHAR},
+      </if>
+      <if test="messagereleaseId != null" >
+        messageRelease_id = #{messagereleaseId,jdbcType=INTEGER},
+      </if>
+      <if test="messageState != null" >
+        message_state = #{messageState,jdbcType=VARCHAR},
+      </if>
+      <if test="founderCheck != null" >
+        founder_check = #{founderCheck,jdbcType=INTEGER},
+      </if>
+      <if test="handlerCheck != null" >
+        handler_check = #{handlerCheck,jdbcType=INTEGER},
+      </if>
+      <if test="refuseReason != null" >
+        refuse_reason = #{refuseReason,jdbcType=VARCHAR},
+      </if>
+      <if test="relationfounder != null" >
+        relationfounder = #{relationfounder,jdbcType=VARCHAR},
+      </if>
+      <if test="messageHandler != null" >
+        message_handler = #{messageHandler,jdbcType=VARCHAR},
+      </if>
+      <if test="founder != null" >
+        founder = #{founder,jdbcType=VARCHAR},
+      </if>
+      <if test="createTime != null" >
+        create_time = #{createTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="copysender != null" >
+        copySender = #{copysender,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.jhun.entity.Message" >
+    update p_message
+    set content = #{content,jdbcType=VARCHAR},
+      actionUrl = #{actionurl,jdbcType=VARCHAR},
+      relationId = #{relationid,jdbcType=VARCHAR},
+      entity = #{entity,jdbcType=VARCHAR},
+      herfAjax = #{herfajax,jdbcType=VARCHAR},
+      messageRelease_id = #{messagereleaseId,jdbcType=INTEGER},
+      message_state = #{messageState,jdbcType=VARCHAR},
+      founder_check = #{founderCheck,jdbcType=INTEGER},
+      handler_check = #{handlerCheck,jdbcType=INTEGER},
+      refuse_reason = #{refuseReason,jdbcType=VARCHAR},
+      relationfounder = #{relationfounder,jdbcType=VARCHAR},
+      message_handler = #{messageHandler,jdbcType=VARCHAR},
+      founder = #{founder,jdbcType=VARCHAR},
+      create_time = #{createTime,jdbcType=TIMESTAMP},
+      copySender = #{copysender,jdbcType=VARCHAR}
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+  <!-- 根据用户查询消息 -->
+  <select id="showAllMessageByUser" parameterType="java.lang.String" resultMap="BaseResultMap">
+    select * from p_message
+    where message_handler = #{userName}
+    or founder = #{userName}
+    order by create_time desc
+  </select>
+  <!-- 查询总数 -->
+  <select id="countItem" resultType="Integer" parameterType="java.lang.String" >
+    select count(*)
+    from p_message
+    where message_handler = #{userName}
+    or founder = #{userName}
+  </select>
+</mapper>
